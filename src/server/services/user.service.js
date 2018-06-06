@@ -1,10 +1,12 @@
 const UserModel = require('../models/user.model');
 
 function addUserService(app) {
-  app.post('/api/user', createUser);
-  app.delete('/api/user/:userId', deleteUser);
+  app.post('/api/register', createUser);
   app.post('/api/login', login);
   app.post('/api/logout', logout);
+  app.get('/api/profile', getLoggedInUser);
+  app.put('/api/profile', updateLoggedInUser);
+  app.delete('/api/profile', deleteUser);
 
   // debug
   app.get('/api/user', findAllUsers);
@@ -18,21 +20,6 @@ function createUser(req, res) {
       res.json(user);
     }
   });
-}
-
-function deleteUser(req, res) {
-  const userId = req.params.userId;
-  if (req.session.userId === userId) {
-    UserModel.deleteOne({_id: userId}, err => {
-      if (err) {
-        res.status(400).json({error: err.message});
-      } else {
-        res.json({})
-      }
-    });
-  } else {
-    res.status(401).json({error: 'Unauthorized'});
-  }
 }
 
 function login(req, res) {
@@ -61,6 +48,59 @@ function logout(req, res) {
   req.session.destroy(() => {
     res.json({});
   });
+}
+
+function getLoggedInUser(req, res) {
+  if (req.session.userId) {
+    UserModel
+      .findById(req.session.userId)
+      .exec((err, user) => {
+        if (err) {
+          res.status(400).json({error: err.message});
+        } else if (!user) {
+          res.status(404).json({error: 'Not found'});
+        } else {
+          res.json(user);
+        }
+      });
+
+  } else {
+    res.status(401).json({error: 'Not logged in'});
+  }
+}
+
+function updateLoggedInUser(req, res) {
+  if (req.session.userId) {
+    UserModel
+      .findByIdAndUpdate(req.session.userId, req.body, {new: true})
+      .exec((err, user) => {
+        if (err) {
+          res.status(400).json({error: err.message});
+        } else if (!user) {
+          res.status(404).json({error: 'Not found'});
+        } else {
+          res.json(user);
+        }
+      });
+  } else {
+    res.status(401).json({error: 'Not logged in'});
+  }
+}
+
+function deleteUser(req, res) {
+  if (req.session.userId) {
+    UserModel
+      .findByIdAndDelete(req.session.userId)
+      .exec(err => {
+        if (err) {
+          res.status(400).json({error: err.message});
+        } else {
+          res.json({})
+        }
+      });
+  } else {
+    res.status(401).json({error: 'Not logged in'});
+  }
 }
 
 function findAllUsers(req, res) {

@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -11,6 +13,14 @@ const app = express();
 
 console.log('Configuring server...');
 app.use(bodyParser.json());
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+  }),
+}));
 
 console.log('Setting up static file serving...');
 app.use(express.static(path.join(__dirname, '..', '..', 'dist/webdev-angular')));

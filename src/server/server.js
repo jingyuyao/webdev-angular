@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const addUserService = require('./services/user.service');
+const addSectionService = require('./services/section.service');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, '..', '..', 'dist/webdev-angular')))
 
 console.log('Adding services...');
 addUserService(app);
+addSectionService(app);
 
 console.log('Connecting to MongoDB...');
 mongoose.connect(process.env.MONGODB_URI);

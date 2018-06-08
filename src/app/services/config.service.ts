@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,6 +14,6 @@ export class ConfigService {
   }
 
   getTeacherApiUrl(path: string): string {
-    return 'https://jingyuyao-webdev-1.herokuapp.com';
+    return 'https://jingyuyao-webdev-1.herokuapp.com' + path;
   }
 }

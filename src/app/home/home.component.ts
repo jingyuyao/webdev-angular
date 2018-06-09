@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { TeacherService, Course } from '../services/teacher.service';
 
@@ -7,16 +7,10 @@ import { TeacherService, Course } from '../services/teacher.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  courses: Course[] = [];
-
+export class HomeComponent {
   constructor(private teacherService: TeacherService) { }
 
-  ngOnInit() {
-    this.teacherService
-      .getCourses()
-      .subscribe(courses => this.courses = courses);
-  }
+  courses = this.teacherService.getCourses();
 
   onCourseSelect(course) {
     console.log(course);

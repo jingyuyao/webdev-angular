@@ -22,6 +22,10 @@ export class TeacherService {
     return this.getTeacherApi<Module[]>(`/api/course/${courseId}/modules`);
   }
 
+  getLessons(moduleId: number): Observable<Lesson[]> {
+    return this.getTeacherApi<Lesson[]>(`/api/module/${moduleId}/lessons`);
+  }
+
   private getTeacherApi<T>(path: string): Observable<T> {
     return this.http.get<T>(this.configService.getTeacherApiUrl(path));
   }
@@ -35,6 +39,11 @@ export interface Course {
 }
 
 export interface Module {
+  id: number;
+  title: string;
+}
+
+export interface Lesson {
   id: number;
   title: string;
 }

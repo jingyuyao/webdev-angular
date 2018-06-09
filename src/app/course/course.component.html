@@ -5,3 +5,11 @@
     {{module.title}}
   </mat-list-item>
 </mat-nav-list>
+
+<mat-tab-group>
+  <mat-tab
+    *ngFor="let lesson of lessons"
+    label="{{lesson.title}}">
+    Showing lesson id {{lesson.id}}
+  </mat-tab>
+</mat-tab-group>

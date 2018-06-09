@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TeacherService, Module } from '../services/teacher.service';
+import { TeacherService, Module, Lesson } from '../services/teacher.service';
 
 @Component({
   selector: 'app-course',
@@ -10,6 +10,7 @@ import { TeacherService, Module } from '../services/teacher.service';
 })
 export class CourseComponent implements OnInit {
   modules: Module[] = [];
+  lessons: Lesson[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,8 @@ export class CourseComponent implements OnInit {
   }
 
   openModule(module: Module) {
-    console.log(module);
+    this.teacherService
+      .getLessons(module.id)
+      .subscribe(lessons => this.lessons = lessons);
   }
 }

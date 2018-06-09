@@ -22,4 +22,8 @@ export class CourseComponent implements OnInit {
       .getModules(id)
       .subscribe(modules => this.modules = modules);
   }
+
+  openModule(module: Module) {
+    console.log(module);
+  }
 }

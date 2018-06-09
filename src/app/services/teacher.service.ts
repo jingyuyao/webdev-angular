@@ -11,17 +11,30 @@ export class TeacherService {
 
   constructor(
     private http: HttpClient,
-    private configService: ConfigService) { }
+    private configService: ConfigService,
+  ) { }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(
-      this.configService.getTeacherApiUrl('/api/course'));
+    return this.getTeacherApi<Course[]>('/api/course');
+  }
+
+  getModules(courseId: number): Observable<Module[]> {
+    return this.getTeacherApi<Module[]>(`/api/course/${courseId}/modules`);
+  }
+
+  private getTeacherApi<T>(path: string): Observable<T> {
+    return this.http.get<T>(this.configService.getTeacherApiUrl(path));
   }
 }
 
 export interface Course {
-  id: Number;
-  title: String;
-  created: String;
-  modified: String;
+  id: number;
+  title: string;
+  created: string;
+  modified: string;
+}
+
+export interface Module {
+  id: number;
+  title: string;
 }

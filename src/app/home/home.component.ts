@@ -17,8 +17,4 @@ export class HomeComponent implements OnInit {
       .getCourses()
       .subscribe(courses => this.courses = courses);
   }
-
-  onCourseSelect(course) {
-    console.log(course);
-  }
 }

@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+mat-nav-list {
+  flex: 1;
+}
+
+mat-tab-group {
+  flex: 2;
+}

@@ -9,14 +9,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseComponent } from './course/course.component';
-import { ModuleComponent } from './module/module.component';
+import { WidgetListComponent } from './widget-list/widget-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CourseComponent,
-    ModuleComponent
+    WidgetListComponent
   ],
   imports: [
     BrowserModule,

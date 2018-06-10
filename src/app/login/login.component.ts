@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { StudentService, User } from '../services/student.service';
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
   };
   showLoginError = false;
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.studentService
       .login(this.user)
       .subscribe(
-        () => console.log('success'),
+        () => this.router.navigate(['/profile']),
         () => {
           this.showLoginError = true;
           loginForm.resetForm();

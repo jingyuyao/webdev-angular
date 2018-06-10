@@ -4,6 +4,7 @@ function addUserService(app) {
   app.post('/api/register', createUser);
   app.post('/api/login', login);
   app.post('/api/logout', logout);
+  app.get('/api/loggedIn', loggedIn);
   app.get('/api/profile', getLoggedInUser);
   app.put('/api/profile', updateLoggedInUser);
   app.delete('/api/profile', deleteUser);
@@ -48,6 +49,14 @@ function logout(req, res) {
   req.session.destroy(() => {
     res.json({});
   });
+}
+
+function loggedIn(req, res) {
+  if (req.session.userId) {
+    res.json({userId: req.session.userId});
+  } else {
+    res.status(401).json({error: 'Not logged in'});
+  }
 }
 
 function getLoggedInUser(req, res) {

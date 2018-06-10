@@ -2,7 +2,7 @@
   Loading courses... Can take a while for first request since we're using free Heroku instances.
 </p>
 <a mat-raised-button color="primary"
-  *ngIf="currentUser; else loginButton">Profile</a>
+  *ngIf="currentUser; else loginButton" routerLink="/profile">Profile</a>
 <ng-template #loginButton>
   <a mat-raised-button color="primary" routerLink="/login">Login</a>
 </ng-template>

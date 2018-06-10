@@ -3,17 +3,17 @@ import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/r
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { StudentService, User } from './student.service';
+import { StudentService, LoggedInUser } from './student.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CurrentUserResolver implements Resolve<User> {
+export class CurrentUserResolver implements Resolve<LoggedInUser> {
   constructor(private studentService: StudentService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
-    return this.studentService.getProfile().pipe(
-      catchError(() => of(null)),
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<LoggedInUser> {
+    return this.studentService.loggedIn().pipe(
+      catchError(() => of(null))
     );
   }
 }

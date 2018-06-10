@@ -29,6 +29,10 @@ export class StudentService {
     return this.http.post<any>(this.getUrl('/api/logout'), {}, this.postOptions);
   }
 
+  loggedIn(): Observable<LoggedInUser> {
+    return this.http.get<LoggedInUser>(this.getUrl('/api/loggedIn'), this.getOptions);
+  }
+
   getProfile(): Observable<User> {
     return this.http.get<User>(this.getUrl('/api/profile'), this.getOptions);
   }
@@ -47,4 +51,8 @@ export interface User {
   email?: string;
   role?: string;
   dateOfBirth?: Date;
+}
+
+export interface LoggedInUser {
+  userId: string;
 }

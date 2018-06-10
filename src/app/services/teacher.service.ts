@@ -30,6 +30,10 @@ export class TeacherService {
     return this.getTeacherApi<WidgetsResponse>(`/api/lesson/${lessonId}/widgets`);
   }
 
+  getQuestions(examId: number): Observable<QuestionsResponse> {
+    return this.getTeacherApi<QuestionsResponse>(`/api/widget/${examId}/questions`);
+  }
+
   private getTeacherApi<T>(path: string): Observable<T> {
     return this.http.get<T>(this.configService.getTeacherApiUrl(path));
   }
@@ -68,4 +72,17 @@ export interface Widget {
   href?: string;
   title?: string;
   points?: number;
+}
+
+export interface QuestionsResponse {
+  questions: Question[];
+}
+
+export interface Question {
+  id: number;
+  type: string;
+  title: string;
+  points: number;
+  text: string;
+  choices?: string[];
 }

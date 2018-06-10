@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Exam</h3>
+  <p>{{widget.text}}</p>
+  <div class="question"
+    *ngFor="let question of questions">
+    <h5>{{question.title}} Points: {{question.points}}</h5>
+    <p>{{question.text}}</p>
+    <p *ngIf="question.choices">Choices:</p>
+    <ol *ngIf="question.choices">
+      <li *ngFor="let choice of question.choices">{{choice}}</li>
+    </ol>
+  </div>
+</div>

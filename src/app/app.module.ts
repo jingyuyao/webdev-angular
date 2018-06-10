@@ -13,13 +13,15 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseComponent } from './course/course.component';
 import { WidgetListComponent } from './widget-list/widget-list.component';
+import { ExamComponent } from './exam/exam.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CourseComponent,
-    WidgetListComponent
+    WidgetListComponent,
+    ExamComponent
   ],
   imports: [
     BrowserModule,

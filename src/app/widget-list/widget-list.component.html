@@ -33,6 +33,7 @@
       </mat-form-field>
       <button mat-raised-button color="primary">Submit</button>
     </div>
-    <p *ngSwitchDefault>Unknown {{widget.type}} detected.</p>
+    <app-exam *ngSwitchCase="'Exam'" [widget]="widget"></app-exam>
+    <p *ngSwitchDefault>Unknown {{widget.type}} widget detected.</p>
   </div>
 </div>

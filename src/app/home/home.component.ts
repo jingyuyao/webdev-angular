@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TeacherService, Course } from '../services/teacher.service';
+import { User } from '../services/student.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { TeacherService, Course } from '../services/teacher.service';
 })
 export class HomeComponent implements OnInit {
   courses: Course[] = [];
+  currentUser?: User;
 
   constructor(
     private teacherService: TeacherService,
@@ -17,7 +19,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.data);
+    this.currentUser = this.route.snapshot.data.currentUser;
 
     this.teacherService
       .getCourses()

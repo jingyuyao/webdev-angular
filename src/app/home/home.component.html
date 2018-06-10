@@ -1,6 +1,11 @@
 <p *ngIf="courses.length === 0">
   Loading courses... Can take a while for first request since we're using free Heroku instances.
 </p>
+<a mat-raised-button color="primary"
+  *ngIf="currentUser; else loginButton">Profile</a>
+<ng-template #loginButton>
+  <a mat-raised-button color="primary">Login</a>
+</ng-template>
 <mat-nav-list>
   <a mat-list-item
     *ngFor="let course of courses"

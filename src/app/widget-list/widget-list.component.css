@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  align-self: center;
+}

@@ -1,6 +1,27 @@
-<mat-list>
-  <mat-list-item
-    *ngFor="let widget of widgets">
-    {{widget.type}} {{widget.name}}
-  </mat-list-item>
-</mat-list>
+<div class="container">
+  <div class="widget"
+    *ngFor="let widget of widgets"
+    [ngSwitch]="widget.type">
+    <div
+      *ngSwitchCase="'Heading'"
+      [ngSwitch]="widget.size">
+      <h1 *ngSwitchCase="1">{{widget.text}}</h1>
+      <h2 *ngSwitchCase="2">{{widget.text}}</h2>
+      <h3 *ngSwitchCase="3">{{widget.text}}</h3>
+    </div>
+    <p *ngSwitchCase="'Paragraph'">{{widget.text}}</p>
+    <img *ngSwitchCase="'Image'" src="{{widget.src}}"/>
+    <a *ngSwitchCase="'Link'" href="{{widget.href}}">{{widget.text}}</a>
+    <div
+      *ngSwitchCase="'List'"
+      [ngSwitch]="widget.listType">
+      <ul *ngSwitchCase="'UNORDERED'">
+        <li *ngFor="let item of widget.text.split('\n')">{{item}}</li>
+      </ul>
+      <ol *ngSwitchCase="'ORDERED'">
+        <li *ngFor="let item of widget.text.split('\n')">{{item}}</li>
+      </ol>
+    </div>
+    <p *ngSwitchDefault>Unknown {{widget.type}} detected.</p>
+  </div>
+</div>

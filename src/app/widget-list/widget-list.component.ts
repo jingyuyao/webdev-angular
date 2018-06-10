@@ -16,6 +16,10 @@ export class WidgetListComponent implements OnInit {
   ngOnInit() {
     this.teacherService
       .getWidgets(this.lesson.id)
-      .subscribe(widgetsResponse => this.widgets = widgetsResponse.widgets);
+      .subscribe(widgetsResponse => {
+        const sorted = [...widgetsResponse.widgets];
+        sorted.sort((l, r) => l.position - r.position);
+        this.widgets = sorted;
+      });
   }
 }

@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CourseComponent } from './course/course.component';
 import { WidgetListComponent } from './widget-list/widget-list.component';
 import { ExamComponent } from './exam/exam.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ExamComponent } from './exam/exam.component';
     HomeComponent,
     CourseComponent,
     WidgetListComponent,
-    ExamComponent
+    ExamComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

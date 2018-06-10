@@ -66,5 +66,6 @@ export interface Widget {
   src?: string;
   listType?: string;
   href?: string;
+  title?: string;
   points?: number;
 }

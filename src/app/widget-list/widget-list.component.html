@@ -22,6 +22,17 @@
         <li *ngFor="let item of widget.text.split('\n')">{{item}}</li>
       </ol>
     </div>
+    <div *ngSwitchCase="'Assignment'">
+      <h3>{{widget.title}} Points: {{widget.points}}</h3>
+      <p>{{widget.text}}</p>
+      <mat-form-field>
+        <textarea matInput placeholder="Essay answer"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Submit a link"/>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Submit</button>
+    </div>
     <p *ngSwitchDefault>Unknown {{widget.type}} detected.</p>
   </div>
 </div>

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -23,6 +26,9 @@ import { WidgetListComponent } from './widget-list/widget-list.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatListModule,
     MatTabsModule,
   ],

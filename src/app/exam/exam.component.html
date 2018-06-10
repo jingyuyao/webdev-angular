@@ -5,9 +5,26 @@
     *ngFor="let question of questions">
     <h5>{{question.title}} Points: {{question.points}}</h5>
     <p>{{question.text}}</p>
-    <p *ngIf="question.choices">Choices:</p>
-    <ol *ngIf="question.choices">
-      <li *ngFor="let choice of question.choices">{{choice}}</li>
-    </ol>
+    <div [ngSwitch]="question.type">
+      <mat-selection-list
+        *ngSwitchCase="'ChoiceQuestion'">
+        <mat-list-option
+          *ngFor="let choice of question.choices">
+          {{choice}}
+        </mat-list-option>
+      </mat-selection-list>
+      <mat-form-field
+        *ngSwitchCase="'EssayQuestion'">
+        <textarea matInput placeholder="Essay answer"></textarea>
+      </mat-form-field>
+      <mat-selection-list
+        *ngSwitchCase="'BooleanQuestion'">
+        <mat-list-option>True</mat-list-option>
+        <mat-list-option>False</mat-list-option>
+      </mat-selection-list>
+      <p *ngSwitchCase="'FillInQuestion'">
+        Fill in answer not implemented
+      </p>
+    </div>
   </div>
 </div>

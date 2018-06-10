@@ -1,0 +1,10 @@
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  align-items: space-between;
+  display: flex;
+}

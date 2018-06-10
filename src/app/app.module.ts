@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -36,6 +37,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatListModule,
     MatTabsModule,

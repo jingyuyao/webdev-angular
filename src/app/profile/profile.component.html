@@ -1,3 +1,50 @@
-<p>
-  profile works!
-</p>
+<h2>Profile</h2>
+<form *ngIf="user" #profileForm="ngForm" (ngSubmit)="submit(profileForm)">
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Username" required
+      [(ngModel)]="user.username" name="username"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="password" placeholder="Password" required
+      [(ngModel)]="user.password" name="password"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="First name"
+      [(ngModel)]="user.firstName" name="firstName"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Last name"
+      [(ngModel)]="user.lastName" name="lastName"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Phone"
+      [(ngModel)]="user.phone" name="phone"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Email"
+      [(ngModel)]="user.email" name="email"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select
+      placeholder="Role" [(ngModel)]="user.role" name="role">
+      <mat-option [value]="'STUDENT'">Student</mat-option>
+      <mat-option [value]="'FACULTY'">Faculty</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Birth date"
+      [(ngModel)]="user.dateOfBirth" name="dateOfBirth"/>
+  </mat-form-field>
+  <div class="actions">
+    <a mat-raised-button>Logout</a>
+    <button mat-raised-button color="primary" type="submit"
+      [disabled]="!profileForm.form.valid">Update</button>
+  </div>
+</form>

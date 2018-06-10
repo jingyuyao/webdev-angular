@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { StudentService, User } from '../services/student.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  user: User;
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit() {
+    this.studentService.getProfile().subscribe(user => this.user = user);
   }
 
+  submit(profileForm: NgForm) {
+  }
 }

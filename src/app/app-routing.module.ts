@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CurrentUserResolver } from './services/current-user-resolver.service';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
 
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'course/:id',

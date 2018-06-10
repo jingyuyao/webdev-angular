@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { TeacherService, Course } from '../services/teacher.service';
 
@@ -10,9 +11,14 @@ import { TeacherService, Course } from '../services/teacher.service';
 export class HomeComponent implements OnInit {
   courses: Course[] = [];
 
-  constructor(private teacherService: TeacherService) { }
+  constructor(
+    private teacherService: TeacherService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.data);
+
     this.teacherService
       .getCourses()
       .subscribe(courses => this.courses = courses);

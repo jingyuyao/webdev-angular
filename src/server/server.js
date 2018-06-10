@@ -16,7 +16,8 @@ const app = express();
 
 console.log('Configuring server...');
 app.use(cors({
-  origin: 'http://localhost:4200'
+  origin: 'http://localhost:4200',
+  credentials: true,
 }));
 app.use(bodyParser.json());
 app.use(session({

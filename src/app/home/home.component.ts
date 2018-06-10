@@ -11,7 +11,7 @@ import { LoggedInUser } from '../services/student.service';
 })
 export class HomeComponent implements OnInit {
   courses: Course[] = [];
-  currentUser?: LoggedInUser;
+  loggedInUser?: LoggedInUser;
 
   constructor(
     private teacherService: TeacherService,
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentUser = this.route.snapshot.data.currentUser;
+    this.loggedInUser = this.route.snapshot.data.loggedInUser;
 
     this.teacherService
       .getCourses()

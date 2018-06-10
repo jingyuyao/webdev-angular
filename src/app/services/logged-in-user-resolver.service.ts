@@ -8,7 +8,7 @@ import { StudentService, LoggedInUser } from './student.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CurrentUserResolver implements Resolve<LoggedInUser> {
+export class LoggedInUserResolver implements Resolve<LoggedInUser> {
   constructor(private studentService: StudentService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<LoggedInUser> {

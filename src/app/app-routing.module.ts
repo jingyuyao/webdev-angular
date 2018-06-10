@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CurrentUserResolver } from './services/current-user-resolver.service';
+import { LoggedInUserResolver } from './services/logged-in-user-resolver.service';
 import { ProfileResolver } from './services/profile-resolver.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: HomeComponent,
     resolve: {
-      currentUser: CurrentUserResolver
+      loggedInUser: LoggedInUserResolver
     },
   },
   {

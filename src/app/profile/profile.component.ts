@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { StudentService, User } from '../services/student.service';
@@ -11,10 +12,13 @@ import { StudentService, User } from '../services/student.service';
 export class ProfileComponent implements OnInit {
   user: User;
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
-    this.studentService.getProfile().subscribe(user => this.user = user);
+    this.user = this.route.snapshot.data.user;
   }
 
   submit(profileForm: NgForm) {

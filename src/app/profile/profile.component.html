@@ -1,5 +1,5 @@
 <h2>Profile</h2>
-<form *ngIf="user" #profileForm="ngForm" (ngSubmit)="submit(profileForm)">
+<form #profileForm="ngForm" (ngSubmit)="submit(profileForm)">
   <mat-form-field>
     <input
       matInput type="text" placeholder="Username" required

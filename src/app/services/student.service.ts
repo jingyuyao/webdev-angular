@@ -37,6 +37,10 @@ export class StudentService {
     return this.http.get<User>(this.getUrl('/api/profile'), this.getOptions);
   }
 
+  updateProfile(user: User): Observable<User> {
+    return this.http.put<User>(this.getUrl('/api/profile'), user, this.postOptions);
+  }
+
   private getUrl(path: string): string {
     return this.configService.getStudentApiUrl(path);
   }

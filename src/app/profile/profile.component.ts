@@ -11,6 +11,8 @@ import { StudentService, User } from '../services/student.service';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  showError = false;
+  updated = false;
 
   constructor(
     private studentService: StudentService,
@@ -22,5 +24,16 @@ export class ProfileComponent implements OnInit {
   }
 
   submit(profileForm: NgForm) {
+    this.showError = false;
+    this.updated = false;
+    this.studentService
+      .updateProfile(this.user)
+      .subscribe(
+        user => {
+          this.user = user;
+          this.updated = true;
+        },
+        () => this.showError = true,
+      );
   }
 }

@@ -47,4 +47,6 @@
     <button mat-raised-button color="primary" type="submit"
       [disabled]="!profileForm.form.valid">Update</button>
   </div>
+  <p *ngIf="updated">Updated successfully!</p>
+  <p *ngIf="showError">Error updating profile</p>
 </form>

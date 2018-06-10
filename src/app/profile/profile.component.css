@@ -4,6 +4,10 @@ form {
   flex-direction: column;
 }
 
+mat-form-field {
+  min-width: 300px;
+}
+
 .actions {
   align-items: space-between;
   display: flex;

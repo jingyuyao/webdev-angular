@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -14,6 +15,9 @@ const addEnrollmentService = require('./services/enrollment.service');
 const app = express();
 
 console.log('Configuring server...');
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));
 app.use(bodyParser.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,

@@ -1,13 +1,19 @@
 <h2>Login</h2>
-<div class="form">
+<form #loginForm="ngForm" (ngSubmit)="submit(loginForm)">
   <mat-form-field>
-    <input matInput placeholder="Username"/>
+    <input
+      matInput type="text" placeholder="Username" required
+      [(ngModel)]="user.username" name="username"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="password" placeholder="Password"/>
+    <input
+      matInput type="password" placeholder="Password" required
+      [(ngModel)]="user.password" name="password"/>
   </mat-form-field>
   <div class="actions">
     <a mat-raised-button>Register</a>
-    <button mat-raised-button color="primary">Login</button>
+    <button mat-raised-button color="primary" type="submit"
+      [disabled]="!loginForm.form.valid">Login</button>
   </div>
-</div>
+  <p *ngIf="showLoginError">Invalid username or password</p>
+</form>

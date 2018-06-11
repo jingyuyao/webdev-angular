@@ -1,4 +1,6 @@
 <h2>Profile</h2>
+<a mat-raised-button color="primary" routerLink="/">Home</a>
+<a *ngIf="user.role === 'ADMIN'" mat-raised-button color="primary" routerLink="/admin">Admin</a>
 <form #profileForm="ngForm" (ngSubmit)="submit(profileForm)">
   <mat-form-field>
     <input

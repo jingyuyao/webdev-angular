@@ -9,7 +9,7 @@ import { StudentService, Section } from '../services/student.service';
   styleUrls: ['./sections.component.css']
 })
 export class SectionsComponent implements OnInit {
-  sections: Section[] = [];
+  enrollmentSections: EnrollmentSection[] = [];
 
   constructor(
     private studentService: StudentService,
@@ -21,10 +21,24 @@ export class SectionsComponent implements OnInit {
   }
 
   refreshSections() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const userId = this.route.snapshot.data.loggedInUser.userId;
     this.studentService
-      .getSections(id)
-      .subscribe(sections => this.sections = sections);
+      .getEnrollments(userId)
+      .subscribe(enrollments => {
+        const courseId = Number(this.route.snapshot.paramMap.get('id'));
+        const enrolled = enrollments.find(enrollment => enrollment.courseId === courseId);
+        this.studentService
+          .getSections(courseId)
+          .subscribe(sections => {
+            this.enrollmentSections = sections.map(section => {
+              return {
+                section: section,
+                canEnroll: !enrolled,
+                canUnenroll: enrolled && enrolled._id === section._id,
+              };
+            });
+          });
+      });
   }
 
   enroll(section: Section) {
@@ -34,4 +48,18 @@ export class SectionsComponent implements OnInit {
       .enroll(section._id, userId)
       .subscribe(() => this.refreshSections());
   }
+
+  unenroll(section: Section) {
+    const userId = this.route.snapshot.data.loggedInUser.userId;
+
+    this.studentService
+      .unenroll(section._id, userId)
+      .subscribe(() => this.refreshSections());
+  }
+}
+
+interface EnrollmentSection {
+  section: Section;
+  canEnroll: boolean;
+  canUnenroll: boolean;
 }

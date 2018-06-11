@@ -1,6 +1,12 @@
 <mat-list>
-  <mat-list-item *ngFor="let section of sections">
-    <span>{{section.title}} Remaining seats: {{section.maxSeats - section.enrollments.length}}</span>
-    <button mat-raised-button color="primary" (click)="enroll(section)">Enroll</button>
+  <mat-list-item *ngFor="let enrollment of enrollmentSections">
+    <span>
+      {{enrollment.section.title}}
+      Remaining seats: {{enrollment.section.maxSeats - enrollment.section.enrollments.length}}
+    </span>
+    <button mat-raised-button color="primary"
+      *ngIf="enrollment.canEnroll" (click)="enroll(enrollment.section)">Enroll</button>
+    <button mat-raised-button color="primary"
+      *ngIf="enrollment.canUnenroll" (click)="unenroll(enrollment.section)">Unenroll</button>
   </mat-list-item>
 </mat-list>

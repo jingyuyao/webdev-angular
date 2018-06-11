@@ -11,7 +11,7 @@
       [(ngModel)]="user.password" name="password"/>
   </mat-form-field>
   <div class="actions">
-    <a mat-raised-button>Register</a>
+    <a mat-raised-button routerLink="/register">Register</a>
     <button mat-raised-button color="primary" type="submit"
       [disabled]="!loginForm.form.valid">Login</button>
   </div>

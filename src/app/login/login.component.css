@@ -9,6 +9,5 @@ mat-form-field {
 }
 
 .actions {
-  align-items: space-between;
   display: flex;
 }

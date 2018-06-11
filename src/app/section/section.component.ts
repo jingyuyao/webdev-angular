@@ -20,7 +20,10 @@ export class SectionComponent implements OnInit {
   submit(sectionForm: NgForm) {
     this.studentService
       .updateSection(this.section)
-      .subscribe(section => this.section = section);
+      .subscribe(section => {
+        this.section = section;
+        alert('Updated section');
+      });
   }
 
   remove() {

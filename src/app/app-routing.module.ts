@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
+import { SectionsComponent } from './sections/sections.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
     resolve: {
       user: ProfileResolver
     },
+  },
+  {
+    path: 'course/:id/sections',
+    component: SectionsComponent
   },
   {
     path: 'course/:id',

@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { SectionComponent } from './section/section.component';
+import { SectionsComponent } from './sections/sections.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SectionComponent } from './section/section.component';
     ProfileComponent,
     RegisterComponent,
     AdminComponent,
-    SectionComponent
+    SectionComponent,
+    SectionsComponent
   ],
   imports: [
     BrowserModule,

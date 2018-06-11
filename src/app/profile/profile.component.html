@@ -35,6 +35,7 @@
       placeholder="Role" [(ngModel)]="user.role" name="role">
       <mat-option [value]="'STUDENT'">Student</mat-option>
       <mat-option [value]="'FACULTY'">Faculty</mat-option>
+      <mat-option [value]="'ADMIN'" disabled>Admin</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>

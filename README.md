@@ -1,6 +1,9 @@
 # WebdevAngular
+Live site: http://jingyuyao-webdev-angular.herokuapp.com/ 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+## Code
+- Server: `src/server/`
+- Client: `src/app/`
 
 ## Development server
 

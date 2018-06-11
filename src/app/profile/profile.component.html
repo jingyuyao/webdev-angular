@@ -43,7 +43,7 @@
       [(ngModel)]="user.dateOfBirth" name="dateOfBirth"/>
   </mat-form-field>
   <div class="actions">
-    <a mat-raised-button>Logout</a>
+    <button type="button" mat-raised-button (click)="logout()">Logout</button>
     <button mat-raised-button color="primary" type="submit"
       [disabled]="!profileForm.form.valid">Update</button>
   </div>

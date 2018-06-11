@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { StudentService, User } from '../services/student.service';
@@ -17,10 +17,20 @@ export class ProfileComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.user = this.route.snapshot.data.user;
+  }
+
+  logout() {
+    this.studentService
+      .logout()
+      .subscribe(
+        () => this.router.navigate(['/login']),
+        () => console.log('no way'),
+      );
   }
 
   submit(profileForm: NgForm) {

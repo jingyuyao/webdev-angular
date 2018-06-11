@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoggedInUserResolver } from './services/logged-in-user-resolver.service';
 import { ProfileResolver } from './services/profile-resolver.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
     resolve: {
       loggedInUser: LoggedInUserResolver
     },
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
   },
   {
     path: 'register',

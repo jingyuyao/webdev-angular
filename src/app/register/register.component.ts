@@ -28,7 +28,10 @@ export class RegisterComponent implements OnInit {
       .register(this.user)
       .subscribe(
         () => this.router.navigate(['/profile']),
-        () => registerForm.resetForm(),
+        () => {
+          registerForm.resetForm();
+          alert('Register failed');
+        },
       );
   }
 }

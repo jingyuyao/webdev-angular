@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
     username: '',
     password: '',
   };
-  showLoginError = false;
 
   constructor(
     private studentService: StudentService,
@@ -25,14 +24,13 @@ export class LoginComponent implements OnInit {
   }
 
   submit(loginForm: NgForm) {
-    this.showLoginError = false;
     this.studentService
       .login(this.user)
       .subscribe(
         () => this.router.navigate(['/profile']),
         () => {
-          this.showLoginError = true;
           loginForm.resetForm();
+          alert('Login error');
         },
       );
   }

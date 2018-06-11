@@ -21,6 +21,10 @@ export class StudentService {
     private configService: ConfigService,
   ) { }
 
+  register(user: User): Observable<User> {
+    return this.http.post<User>(this.getUrl('/api/register'), user, this.postOptions);
+  }
+
   login(user: User): Observable<User> {
     return this.http.post<User>(this.getUrl('/api/login'), user, this.postOptions);
   }

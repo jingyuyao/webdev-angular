@@ -1,3 +1,18 @@
-<p>
-  register works!
-</p>
+<h2>Register</h2>
+<form #registerForm="ngForm" (ngSubmit)="submit(register)">
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Username" required
+      [(ngModel)]="user.username" name="username"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="password" placeholder="Password" required
+      [(ngModel)]="user.password" name="password"/>
+  </mat-form-field>
+  <div class="actions">
+    <a mat-raised-button routerLink="/login">Login</a>
+    <button mat-raised-button color="primary" type="submit"
+      [disabled]="!registerForm.form.valid">Register</button>
+  </div>
+</form>

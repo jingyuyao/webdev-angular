@@ -18,6 +18,7 @@ function createUser(req, res) {
     if (err) {
       res.status(400).json({error: err.message});
     } else {
+      req.session.userId = user._id;
       res.json(user);
     }
   });

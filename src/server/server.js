@@ -29,13 +29,15 @@ app.use(session({
   }),
 }));
 
-console.log('Setting up static file serving...');
-app.use(express.static(path.join(__dirname, '..', '..', 'dist/webdev-angular')));
-
 console.log('Adding services...');
 addUserService(app);
 addSectionService(app);
 addEnrollmentService(app);
+
+console.log('Setting up static file serving...');
+app.use(express.static(path.join(__dirname, '..', '..', 'dist/webdev-angular')));
+const indexHtml = path.join(__dirname, '..', '..', 'dist/webdev-angular/index.html');
+app.use('/', (req, res) => res.sendFile(indexHtml));
 
 console.log('Connecting to MongoDB...');
 mongoose.connect(process.env.MONGODB_URI);

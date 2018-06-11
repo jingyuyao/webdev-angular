@@ -1,3 +1,20 @@
-<p>
-  admin works!
+<p *ngIf="courses.length === 0">
+  Loading courses... Can take a while for first request since we're using free Heroku instances.
 </p>
+<div class="container">
+  <mat-nav-list class="courses">
+    <mat-list-item
+      *ngFor="let course of courses"
+      (click)="openCourse(course)">
+      {{course.title}}
+    </mat-list-item>
+  </mat-nav-list>
+  <div class="sections">
+    <mat-list>
+      <mat-list-item
+        *ngFor="let section of sections">
+        {{section.title}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

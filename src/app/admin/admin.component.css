@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.courses {
+  flex: 1;
+}
+
+.sections {
+  flex: 2;
+}

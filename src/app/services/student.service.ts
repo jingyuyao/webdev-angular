@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ConfigService } from './config.service';
+import { Course } from './teacher.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,10 @@ export class StudentService {
     return this.http.put<User>(this.getUrl('/api/profile'), user, this.postOptions);
   }
 
+  getSections(course: Course): Observable<Section[]> {
+    return this.http.get<Section[]>(this.getUrl(`/api/course/${course.id}/sections`));
+  }
+
   private getUrl(path: string): string {
     return this.configService.getStudentApiUrl(path);
   }
@@ -63,4 +68,11 @@ export interface User {
 
 export interface LoggedInUser {
   userId: string;
+}
+
+export interface Section {
+  courseId: string;
+  title: string;
+  maxSeats: number;
+  enrollments: string[];
 }

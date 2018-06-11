@@ -46,6 +46,18 @@ export class StudentService {
     return this.http.put<User>(this.getUrl('/api/profile'), user, this.postOptions);
   }
 
+  createSection(section: Section): Observable<Section> {
+    return this.http.post<Section>(this.getUrl('/api/section'), section, this.postOptions);
+  }
+
+  updateSection(section: Section): Observable<Section> {
+    return this.http.put<Section>(this.getUrl(`/api/section/${section._id}`), section, this.postOptions);
+  }
+
+  deleteSection(section: Section): Observable<any> {
+    return this.http.delete<any>(this.getUrl(`/api/section/${section._id}`));
+  }
+
   getSections(course: Course): Observable<Section[]> {
     return this.http.get<Section[]>(this.getUrl(`/api/course/${course.id}/sections`));
   }
@@ -56,6 +68,7 @@ export class StudentService {
 }
 
 export interface User {
+  _id?: string;
   username: string;
   password: string;
   firstName?: string;
@@ -71,6 +84,7 @@ export interface LoggedInUser {
 }
 
 export interface Section {
+  _id?: string;
   courseId: string;
   title: string;
   maxSeats: number;

@@ -2,7 +2,7 @@
   display: flex;
 }
 
-mat-nav-list {
+.modules {
   flex: 1;
 }
 

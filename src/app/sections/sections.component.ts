@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { StudentService, Section } from '../services/student.service';
 
@@ -14,6 +15,7 @@ export class SectionsComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private route: ActivatedRoute,
+    private location: Location,
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,10 @@ export class SectionsComponent implements OnInit {
     this.studentService
       .unenroll(section._id, userId)
       .subscribe(() => this.refreshSections());
+  }
+
+  back() {
+    this.location.back();
   }
 }
 

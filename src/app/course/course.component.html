@@ -1,13 +1,16 @@
 <a mat-raised-button color="primary" routerLink="/">Home</a>
 <a mat-raised-button color="primary" routerLink="./sections">Enroll</a>
 <div class="container">
-  <mat-nav-list>
-    <mat-list-item
-      *ngFor="let module of modules"
-      (click)="openModule(module)">
-      {{module.title}}
-    </mat-list-item>
-  </mat-nav-list>
+  <div class="modules">
+    <h4>Modules</h4>
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let module of modules"
+        (click)="openModule(module)">
+        {{module.title}}
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
 
   <mat-tab-group>
     <mat-tab

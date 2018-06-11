@@ -4,14 +4,18 @@
 <a mat-raised-button color="primary" routerLink="/profile">Profile</a>
 <a mat-raised-button color="primary" routerLink="/">Home</a>
 <div class="container">
-  <mat-nav-list class="courses">
-    <mat-list-item
-      *ngFor="let course of courses"
-      (click)="openCourse(course)">
-      {{course.title}}
-    </mat-list-item>
-  </mat-nav-list>
+  <div class="courses">
+    <h4>Courses</h4>
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let course of courses"
+        (click)="openCourse(course)">
+        {{course.title}}
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
   <div class="sections">
+    <h4>Sections</h4>
     <form *ngIf="newSection" #newSectionForm="ngForm" (ngSubmit)="submit(newSectionForm)">
       <mat-form-field class="title">
         <input

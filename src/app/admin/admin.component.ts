@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
 
   refreshSections() {
     this.studentService
-      .getSections(this.selectedCourse)
+      .getSections(this.selectedCourse.id)
       .subscribe(sections => {
         this.sections = sections;
         this.newSection = {

@@ -45,7 +45,11 @@ const routes: Routes = [
   },
   {
     path: 'course/:id/sections',
-    component: SectionsComponent
+    component: SectionsComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      loggedInUser: LoggedInUserResolver
+    },
   },
   {
     path: 'course/:id',

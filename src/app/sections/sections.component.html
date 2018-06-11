@@ -1,3 +1,6 @@
-<p>
-  sections works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let section of sections">
+    <span>{{section.title}} Remaining seats: {{section.maxSeats - section.enrollments.length}}</span>
+    <button mat-raised-button color="primary" (click)="enroll(section)">Enroll</button>
+  </mat-list-item>
+</mat-list>

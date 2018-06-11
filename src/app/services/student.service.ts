@@ -58,8 +58,22 @@ export class StudentService {
     return this.http.delete<any>(this.getUrl(`/api/section/${section._id}`));
   }
 
-  getSections(course: Course): Observable<Section[]> {
-    return this.http.get<Section[]>(this.getUrl(`/api/course/${course.id}/sections`));
+  getSections(id: number): Observable<Section[]> {
+    return this.http.get<Section[]>(this.getUrl(`/api/course/${id}/sections`));
+  }
+
+  enroll(sectionId: string, userId: string): Observable<Section> {
+    return this.http.post<Section>(
+      this.getUrl(`/api/section/${sectionId}/enrollment/${userId}`), {}, this.postOptions);
+  }
+
+  unenroll(sectionId: string, userId: string): Observable<Section> {
+    return this.http.delete<Section>(
+      this.getUrl(`/api/section/${sectionId}/enrollment/${userId}`));
+  }
+
+  getEnrollments(userId: string): Observable<Section[]> {
+    return this.http.get<Section[]>(this.getUrl(`/api/student/${userId}/sections`));
   }
 
   private getUrl(path: string): string {

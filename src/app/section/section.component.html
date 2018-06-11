@@ -1,3 +1,16 @@
-<p>
-  section works!
-</p>
+<form #sectionForm="ngForm" (ngSubmit)="submit(sectionForm)">
+  <mat-form-field>
+    <input
+      matInput type="text" placeholder="Title" required
+      [(ngModel)]="section.title" name="title"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput type="number" placeholder="Max seats" required
+      [(ngModel)]="section.maxSeats" name="maxSeats"/>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit"
+    [disabled]="!sectionForm.form.valid">Update</button>
+  <button mat-raised-button color="warn" type="button"
+    (click)="remove()">Delete</button>
+</form>

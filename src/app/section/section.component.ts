@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { StudentService, Section } from '../services/student.service';
 
 @Component({
   selector: 'app-section',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit {
+  @Input() section: Section;
+  @Output() deleted = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit() {
   }
 
+  submit(sectionForm: NgForm) {
+    this.studentService
+      .updateSection(this.section)
+      .subscribe(section => this.section = section);
+  }
+
+  remove() {
+    this.studentService
+      .deleteSection(this.section)
+      .subscribe(() => this.deleted.emit(null));
+  }
 }

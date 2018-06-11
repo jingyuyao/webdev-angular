@@ -10,11 +10,9 @@
     </mat-list-item>
   </mat-nav-list>
   <div class="sections">
-    <mat-list>
-      <mat-list-item
-        *ngFor="let section of sections">
-        {{section.title}}
-      </mat-list-item>
-    </mat-list>
+    <app-section
+      *ngFor="let section of sections"
+      [section]="section" (deleted)="refreshSections()">
+    </app-section>
   </div>
 </div>

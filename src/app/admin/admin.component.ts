@@ -11,6 +11,7 @@ import { StudentService, Section } from '../services/student.service';
 export class AdminComponent implements OnInit {
   courses: Course[] = [];
   sections: Section[] = [];
+  selectedCourse: Course;
 
   constructor(
     private teacherService: TeacherService,
@@ -24,8 +25,15 @@ export class AdminComponent implements OnInit {
   }
 
   openCourse(course: Course) {
+    this.selectedCourse = course;
     this.studentService
       .getSections(course)
+      .subscribe(sections => this.sections = sections);
+  }
+
+  refreshSections() {
+    this.studentService
+      .getSections(this.selectedCourse)
       .subscribe(sections => this.sections = sections);
   }
 }

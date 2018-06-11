@@ -9,3 +9,7 @@
 .sections {
   flex: 2;
 }
+
+.title {
+  min-width: 300px;
+}

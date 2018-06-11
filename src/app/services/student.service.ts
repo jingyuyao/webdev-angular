@@ -85,7 +85,7 @@ export interface LoggedInUser {
 
 export interface Section {
   _id?: string;
-  courseId: string;
+  courseId: number;
   title: string;
   maxSeats: number;
   enrollments: string[];
